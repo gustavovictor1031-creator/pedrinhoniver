@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  background: #000;
+  text-align: center;
+}
+
+.convite {
+  position: relative;
+  display: inline-block;
+}
+
+.imagem-fundo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Área clicável invisível */
+.confirmar {
+  position: absolute;
+  top: 70%;   /* posição vertical - ajuste conforme necessário */
+  left: 50%;  /* posição horizontal */
+  transform: translateX(-50%);
+  width: 40%; /* largura da área */
+  height: 10%; /* altura da área */
+  cursor: pointer;
+  /* invisível */
+}
+
+/* Foto dele parada no centro */
+.foto-parada {
+  position: absolute;
+  width: 80px;   /* tamanho da foto */
+  top: 35%;      /* posição vertical */
+  left: 75%;     /* posição horizontal */
+  transform: translate(-50%, -50%); /* garante centralização perfeita */
+  border-radius: 10px;
+  z-index: 2;
+
+  /* removido qualquer sombra ou contorno */
+  box-shadow: none;
+  outline: none;
+}

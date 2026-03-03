@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite Pedro 1 Ano</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Confetes */
+    .confete {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: red;
+      animation: cair 3s linear forwards;
+      z-index: 999;
+    }
+    @keyframes cair {
+      from { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      to   { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Brilho pulsante na foto central */
+    .foto-parada {
+      animation: brilho 2s infinite alternate;
+    }
+    @keyframes brilho {
+      from { box-shadow: 0 0 10px rgba(255,255,0,0.5); }
+      to   { box-shadow: 0 0 40px rgba(255,255,0,1); }
+    }
+
+    /* Fogos de artifício */
+    .fogo {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: explodir 1s ease-out forwards;
+      z-index: 999;
+    }
+    @keyframes explodir {
+      from { transform: scale(1); opacity: 1; }
+      to   { transform: scale(15); opacity: 0; }
+    }
+
+    /* Botão de música */
+    #playButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      background: #ffcc00;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <!-- Imagem principal -->
+  <div class="convite">
+    <img src="imagem.png" alt="Convite Pedro 1 Ano" class="imagem-fundo">
+
+    <!-- Área clicável invisível -->
+    <a href="https://wa.me/5534988765361?text=Confirmo%20minha%20presença%20no%20aniversário!"
+       class="confirmar"></a>
+  </div>
+
+  <!-- Foto dele parada -->
+  <img src="bb.png" alt="Foto Pedro" class="foto-parada">
+
+  <!-- Música de fundo -->
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <!-- Botão para ativar música -->
+  <button id="playButton">🔊 Ativar Música</button>
+
+  <script>
+    const musica = document.getElementById('musica');
+    const playButton = document.getElementById('playButton');
+
+    playButton.addEventListener('click', () => {
+      musica.play();
+      playButton.style.display = 'none';
+
+      // Confetes
+      for (let i = 0; i < 30; i++) {
+        const confete = document.createElement('div');
+        confete.className = 'confete';
+        confete.style.left = Math.random() * window.innerWidth + 'px';
+        confete.style.background = `hsl(${Math.random()*360},100%,50%)`;
+        document.body.appendChild(confete);
+        setTimeout(() => confete.remove(), 3000);
+      }
+
+      // Fogos
+      for (let i = 0; i < 5; i++) {
+        const fogo = document.createElement('div');
+        fogo.className = 'fogo';
+        fogo.style.left = Math.random() * window.innerWidth + 'px';
+        fogo.style.top = Math.random() * window.innerHeight/2 + 'px';
+        fogo.style.background = `hsl(${Math.random()*360},100%,50%)`; // cor aleatória
+        document.body.appendChild(fogo);
+        setTimeout(() => fogo.remove(), 1000);
+      }
+    });
+  </script>
+</body>
+</html>
